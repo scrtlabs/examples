@@ -9,14 +9,14 @@ const contract_wasm = fs.readFileSync(
   "../millionaire-contract/contract.wasm.gz"
 );
 
-// let codeId = 1;
+let codeId = 21998;
 let contractCodeHash =
   "a448595e3a46197776ff966c980d0de770c052c7f1ced1577027906835126bd5";
-let contractAddress = "secret1z092x7f0mepdazmy7gsdcy0zqpsep3fgv53cgu";
+let contractAddress = "secret107zv242mk90lwywqhm2xljqzy62yucwsc7f2xd";
 
 const secretjs = new SecretNetworkClient({
-  chainId: "secretdev-1",
-  url: "http://localhost:1317",
+  chainId: "pulsar-2",
+  url: "https://api.pulsar.scrttestnet.com",
   wallet: wallet,
   walletAddress: wallet.address,
 });
@@ -51,14 +51,14 @@ let upload_contract = async () => {
 
 let instantiate_contract = async () => {
   // Create an instance of the Counter contract, providing a starting count
-  const initMsg = { entropy: "this is my entropy, dude!" };
+  const initMsg = {};
   let tx = await secretjs.tx.compute.instantiateContract(
     {
       code_id: codeId,
       sender: wallet.address,
       code_hash: contractCodeHash,
       init_msg: initMsg,
-      label: "Secret Business Card Demo" + Math.ceil(Math.random() * 10000),
+      label: "Secret Millionaire" + Math.ceil(Math.random() * 10000),
     },
     {
       gasLimit: 400_000,
@@ -73,7 +73,7 @@ let instantiate_contract = async () => {
   console.log(contractAddress);
 };
 
-// instantiate_contract();
+instantiate_contract();
 
 let query_net_worth = async () => {
   let query = await secretjs.query.compute.queryContract({
@@ -86,4 +86,4 @@ let query_net_worth = async () => {
 
   console.log(query);
 };
-query_net_worth();
+// query_net_worth();

@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { MsgExecuteContract } from "secretjs";
 import { SecretjsContext } from "./SecretjsContext";
 
-const contractAddress = "secret1z092x7f0mepdazmy7gsdcy0zqpsep3fgv53cgu";
-const contractCodeHash =
+let contractCodeHash =
   "a448595e3a46197776ff966c980d0de770c052c7f1ced1577027906835126bd5";
+let contractAddress = "secret107zv242mk90lwywqhm2xljqzy62yucwsc7f2xd";
 
 const SecretjsFunctions = () => {
   const { secretjs, secretAddress } = useContext(SecretjsContext);
