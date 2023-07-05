@@ -1,0 +1,3 @@
+cargo:rerun-if-changed=build/main.rs
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/sean_conrad/Desktop/developer/secret/secret-ibc-rng-template/consumer/target/wasm32-unknown-unknown/release/build/typenum-8c30eaada422d178/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/sean_conrad/Desktop/developer/secret/secret-ibc-rng-template/consumer/target/wasm32-unknown-unknown/release/build/typenum-8c30eaada422d178/out/op.rs
