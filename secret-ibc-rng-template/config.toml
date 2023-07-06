@@ -54,15 +54,15 @@ denominator = '3'
 price = 0.1
 denom = 'uscrt'
 
-[chains.packet_filter]
-policy = 'allow'
-list = [['ica*', '*'], ['transfer', 'channel-394']]
+# [chains.packet_filter]
+# policy = 'allow'
+# list = [['wasm*', 'channel-196']]
 
 [[chains]]
 id = 'uni-6'
-rpc_addr = 'https://juno-testnet-rpc.polkachu.com:443'
+rpc_addr = 'https://uni-rpc.reece.sh:443'
 grpc_addr = 'http://juno-testnet-grpc.polkachu.com:12690'
-websocket_addr = 'wss://juno-testnet-rpc.polkachu.com:443/websocket'
+websocket_addr = 'wss://uni-rpc.reece.sh:443/websocket'
 rpc_timeout = '10s'
 account_prefix = 'juno'
 key_name = 'wallet'
@@ -79,6 +79,6 @@ max_block_time = '10s'
 trusting_period = '448h'
 memo_prefix = 'relayed by CryptoCrew Validators'
 trust_threshold = { numerator = '1', denominator = '3' }
-[chains.packet_filter]
-policy = 'allow'
-list = [['transfer', 'channel-394']]
+# [chains.packet_filter]
+# policy = 'allow'
+# list = [['wasm*', 'channel-468']]
