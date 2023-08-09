@@ -19,5 +19,8 @@ contract.wasm*
 # ViM
 *.swp
 
+# env file
+.env 
+
 # Integration tests
 tests/node_modules/*
