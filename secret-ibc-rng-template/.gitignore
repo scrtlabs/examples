@@ -24,3 +24,9 @@ contract.wasm*
 
 # Integration tests
 tests/node_modules/*
+
+# target files
+target/*
+consumer/target/*
+consumer-side-proxy/target/*
+proxy/target/*

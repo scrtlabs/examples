@@ -22,3 +22,6 @@ contract.wasm.gz*
 
 # Integration tests
 tests/node_modules/*
+
+# target files
+target/*

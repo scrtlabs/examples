@@ -21,3 +21,7 @@ contract.wasm*
 
 # Integration tests
 tests/node_modules/*
+
+# target files
+target/*
+secret-viewing-keys-contract/target/*
