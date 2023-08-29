@@ -1,1 +1,1 @@
-To follow along with documentation for this repository, view the Secret docs [here]()
+To follow along with documentation for this repository, view the Secret docs [here](https://docs.scrt.network/secret-network-documentation/development/development-concepts/ibc/secret-ibc-setup)

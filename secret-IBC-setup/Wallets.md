@@ -19,21 +19,31 @@ hermes keys balance --chain secretdev-2
 - Add wallets to secretCLI: 
 
 Install SecretCLI and then run the following: 
-```secretcli keys add --recover a```
+
+```
+secretcli keys add --recover 
+```
 
 You will be asked for the seed recovery mnemonic, which is: 
 
 grant rice replace explain federal release fix clever romance raise often wild taxi quarter soccer fiber love must tape steak together observe swap guitar
 
-- Query wallet balances: 
-
 ##### SecretCLI wallet balance query
+
+```
 secretcli query bank balances "secret1ap26qrlp8mcq2pg6r47w43l0y8zkqm8a450s03"
+```
 
 ##### secretdev-1 wallet query
+
+```
 secretcli config node http://localhost:26657
 secretcli q bank balances secret1ap26qrlp8mcq2pg6r47w43l0y8zkqm8a450s03
+```
 
 ##### secretdev-2 wallet query
+
+```
 secretcli config node http://localhost:36657
 secretcli q bank balances secret1ap26qrlp8mcq2pg6r47w43l0y8zkqm8a450s03
+```
