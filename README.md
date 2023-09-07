@@ -5,4 +5,4 @@
 3. [Verifiable Randomness on Secret Network](./vrf-Randomness-Tutorial/)
 4. [Cross-chain randomness between Secret Network & Juno](./secret-ibc-rng-template/)
 5. [Secret IBC set up with Hermes Relayer](./secret-IBC-setup/)
-6. [IBC Wasm Hooks Tutorial (Auto-wrapping of Snip-20 Tokens)](./IBC-wasm-hooks-tutorial/Add)
+6. [IBC Wasm Hooks Tutorial (Auto-wrapping of Snip-20 Tokens)](./IBC-wasm-hooks-tutorial/)

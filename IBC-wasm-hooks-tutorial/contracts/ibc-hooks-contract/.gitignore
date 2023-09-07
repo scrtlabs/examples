@@ -2,3 +2,5 @@
 target/*
 
 constract.wasm.gz
+contract.wasm*
+contract.wasm.gz*
