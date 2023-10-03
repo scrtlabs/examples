@@ -7,14 +7,14 @@ const wallet = new Wallet(process.env.MNEMONIC);
 
 const contract_wasm = fs.readFileSync("../contract.wasm.gz");
 
-let codeId = 22171;
-let contractCodeHash =
-  "08e92e6551d4eddda1cdc1b392ff247017b4edc0eaf03ee6ceac4ad1d23f40fd";
+// let codeId = 22171;
+// let contractCodeHash =
+//   "08e92e6551d4eddda1cdc1b392ff247017b4edc0eaf03ee6ceac4ad1d23f40fd";
 let contractAddress = "secret1npszz528str3jenvx9ycc2gxcak6ge07tnn406";
 
 const secretjs = new SecretNetworkClient({
-  chainId: "pulsar-2",
-  url: "https://api.pulsar.scrttestnet.com",
+  chainId: "pulsar-3",
+  url: "https://api.pulsar3.scrttestnet.com",
   wallet: wallet,
   walletAddress: wallet.address,
 });

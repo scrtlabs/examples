@@ -15,8 +15,8 @@ const contract_wasm = fs.readFileSync(
 // const contractAddress = "secret1fn7v9r60u9rqgwwxmwn8hhe80ka055pultkd92";
 
 const secretjs = new SecretNetworkClient({
-  chainId: "pulsar-2",
-  url: "https://api.pulsar.scrttestnet.com",
+  chainId: "pulsar-3",
+  url: "https://api.pulsar3.scrttestnet.com",
   wallet: wallet,
   walletAddress: wallet.address,
 });
