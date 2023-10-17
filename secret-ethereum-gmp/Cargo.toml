@@ -1,0 +1,54 @@
+[package]
+name = "secret-axelar-gmp"
+version = "0.1.0"
+authors = ["seanrad"]
+edition = "2021"
+description = "Axelar -> Secret Network"
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+panic = 'abort'
+incremental = false
+overflow-checks = true
+
+[features]
+default = []
+backtraces = ["cosmwasm-std/backtraces"]
+with_floats = []
+stargate = []
+ibc3 = ["stargate"]
+
+[dependencies]
+cosmwasm-std = { git = "https://github.com/scrtlabs/cosmwasm", default-features = false, rev = "8ee395ba033c392d7170c971df97f085edaed2d9", package = "secret-cosmwasm-std", features = [
+  "stargate",
+  "ibc3",
+] }
+cosmwasm-storage = { git = "https://github.com/scrtlabs/cosmwasm", rev = "8ee395ba033c392d7170c971df97f085edaed2d9", package = "secret-cosmwasm-storage" }
+secret-toolkit = { version = "0.7.0" }
+hex = "0.4.3"
+serde-json-wasm = "1.0.0"
+cosmos-sdk-proto = { version = "0.20.0", default-features = false }
+
+schemars = { version = "0.8.11" }
+serde = { version = "1.0" }
+thiserror = { version = "1.0" }
+cosmwasm-schema = "1.0.0"
+prost = { version = "0.12.1", default-features = false, features = [
+  "prost-derive",
+] }
+ethabi = { version = "18.0.0", default-features = false, features = [] }
+
+[patch.crates-io]
+cosmwasm-std = { git = "https://github.com/scrtlabs/cosmwasm", rev = "8ee395ba033c392d7170c971df97f085edaed2d9", package = "secret-cosmwasm-std" }
+cosmwasm-storage = { git = "https://github.com/scrtlabs/cosmwasm", rev = "8ee395ba033c392d7170c971df97f085edaed2d9", package = "secret-cosmwasm-storage" }
