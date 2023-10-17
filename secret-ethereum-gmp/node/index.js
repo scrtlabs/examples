@@ -77,22 +77,3 @@ upload_contract()
   .catch((error) => {
     console.error("Error:", error);
   });
-
-// Query the contract for the stored message sent from Polygon
-let get_stored_message = async () => {
-  let query = await secretjs.query.compute.queryContract({
-    contract_address: contractAddress,
-    query: {
-      get_stored_message: {},
-    },
-    code_hash: contractCodeHash,
-  });
-
-  console.log(query);
-};
-
-// get_stored_message();
-
-// CLI execution message to send a string from Secret to Polygon via IBC:
-
-// secretcli tx wasm execute "secret1k0s02fqqmlhq4g7qmlq9w76p4g9htwelszlk2y" '{"send_message_evm":{"destination_chain":"Polygon","destination_address":"0x13ACd5794A3136E7fAc8f9727259930fcab1290F","message":"hello world"}}' --amount 150000ibc/A7CBAF118AC24A896DC46A098FE9FA2A588A36A2F0239913229D3A11D92E7B2E --from pulsar3-test
