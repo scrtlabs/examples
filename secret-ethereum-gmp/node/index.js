@@ -20,6 +20,8 @@ let contractCodeHash;
 let contractAddress;
 
 let upload_contract = async () => {
+  console.log("Starting deployment…");
+
   let tx = await secretjs.tx.compute.storeCode(
     {
       sender: wallet.address,
@@ -48,6 +50,7 @@ let instantiate_contract = async () => {
   if (!codeId || !contractCodeHash) {
     throw new Error("codeId or contractCodeHash is not set.");
   }
+  console.log("Instantiating contract…");
   let tx = await secretjs.tx.compute.instantiateContract(
     {
       code_id: codeId,
