@@ -7,3 +7,4 @@
 5. [Secret IBC set up with Hermes Relayer](./secret-IBC-setup/)
 6. [IBC Wasm Hooks Tutorial (Auto-wrapping of Snip-20 Tokens)](./IBC-wasm-hooks-tutorial/)
 7. [Ethereum -> Secret Tutorial (General Message Passing with Axelar GMP)](./secret-ethereum-gmp/)
+8. [Ethereum Verifiable Randomness Tutorial with Secret VRF](./EVM-GMP-RNG/)
