@@ -2,7 +2,7 @@ const { ethers } = require("hardhat");
 require("dotenv").config();
 
 async function main() {
-  const contractAddress = "0xf60E43AD3953c5e2B846A80D73Dc5bf1Eaa4E497";
+  const contractAddress = "0xf3431487fd737ec32279333987b1D7fBdB2faD91";
 
   const ContractJson = require("../artifacts/contracts/ReceiveRandom.sol/ReceiveRandom.json");
   const ABI = ContractJson.abi;
