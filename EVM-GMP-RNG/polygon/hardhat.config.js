@@ -1,9 +1,10 @@
-require("dotenv").config();
 require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
 
+/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
-    version: "0.8.18",
+    version: "0.8.9",
     settings: {
       optimizer: {
         enabled: true,
@@ -13,8 +14,8 @@ module.exports = {
   },
   networks: {
     polygon: {
-      url: `https://polygon-mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
-      accounts: ["0x" + process.env.PRIVATE_KEY],
+      url: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_KEY}`,
+      accounts: [process.env.PRIVATE_KEY],
     },
   },
 };

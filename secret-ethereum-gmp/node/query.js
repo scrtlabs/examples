@@ -5,15 +5,15 @@ dotenv.config();
 const wallet = new Wallet(process.env.MNEMONIC);
 
 const secretjs = new SecretNetworkClient({
-  chainId: "secret-4",
-  url: "https://lcd.mainnet.secretsaturn.net",
+  chainId: "pulsar-3",
+  url: "https://api.pulsar3.scrttestnet.com",
   wallet: wallet,
   walletAddress: wallet.address,
 });
 
 let contractCodeHash =
-  "7ce84114e0d1401a8bdf37717a0d1389e348cf2ac26e2c79a1e4b301452c71e6";
-let contractAddress = "secret1k0s02fqqmlhq4g7qmlq9w76p4g9htwelszlk2y";
+  "90cc33f5f8313e8c584516d1196ff8b52520a86926cf6967e8361c717e91d5c2";
+let contractAddress = "secret1qdkf9630dmpekkmww873e5tec3jxs0klqzg9fr";
 
 // Query the contract for the stored message sent from Polygon
 let get_stored_message = async () => {

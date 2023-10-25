@@ -5,20 +5,20 @@ dotenv.config();
 const wallet = new Wallet(process.env.MNEMONIC);
 
 const secretjs = new SecretNetworkClient({
-  chainId: "secret-4",
-  url: "https://lcd.mainnet.secretsaturn.net",
+  chainId: "pulsar-3",
+  url: "https://api.pulsar3.scrttestnet.com",
   wallet: wallet,
   walletAddress: wallet.address,
 });
 
 // secret contract info
 let contractCodeHash =
-  "f2e21a5ee09296464248a293f4050979d7c76a2e9a8a293e24c95632808d3c6b";
-let contractAddress = "secret1fez27f578vuqprd73p08v65vntq2apg9rjdax7";
+  "dd6a7f6efce42718503d07ebf3c6dadf143c1ebfaf171c5ee82c3c80845bd514";
+let contractAddress = "secret1q3drrgpqrgqr54glsee0m8upkvnck44rzf9rj0";
 
 //send_message_evm variables
 let destinationChain = "Polygon";
-let destinationAddress = "0xf3431487fd737ec32279333987b1D7fBdB2faD91";
+let destinationAddress = "0x4396a9F3b1962bC7277fC44a78AA5c57e8966978";
 
 let send_message_evm = async () => {
   const tx = await secretjs.tx.compute.executeContract(
@@ -36,7 +36,7 @@ let send_message_evm = async () => {
         {
           amount: "250000",
           denom:
-            "ibc/A7CBAF118AC24A896DC46A098FE9FA2A588A36A2F0239913229D3A11D92E7B2E",
+            "ibc/9463E39D230614B313B487836D13A392BD1731928713D4C8427A083627048DB3",
         },
       ],
     },

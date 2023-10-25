@@ -1,8 +1,7 @@
 const { ethers } = require("hardhat");
-require("dotenv").config();
 
 async function main() {
-  const contractAddress = "0xf3431487fd737ec32279333987b1D7fBdB2faD91";
+  const contractAddress = "0x4396a9F3b1962bC7277fC44a78AA5c57e8966978";
 
   const ContractJson = require("../artifacts/contracts/ReceiveRandom.sol/ReceiveRandom.json");
   const ABI = ContractJson.abi;
@@ -19,7 +18,6 @@ async function main() {
     intArray.push(parseInt(hexString.slice(i, i + 2), 16));
   }
   console.log(`random integers: `, intArray);
-  console.log("config: ", CONFIG);
 }
 
 main()
