@@ -6,7 +6,7 @@ const wallet = new Wallet(process.env.MNEMONIC);
 
 const secretjs = new SecretNetworkClient({
   chainId: "pulsar-3",
-  url: "https://api.pulsar3.scrttestnet.com",
+  url: "https://lcd.pulsar-3.secretsaturn.net",
   wallet: wallet,
   walletAddress: wallet.address,
 });

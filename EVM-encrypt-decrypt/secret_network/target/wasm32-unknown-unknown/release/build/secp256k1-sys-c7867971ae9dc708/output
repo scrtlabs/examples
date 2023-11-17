@@ -1,0 +1,106 @@
+TARGET = Some("wasm32-unknown-unknown")
+OPT_LEVEL = Some("3")
+HOST = Some("x86_64-apple-darwin")
+CC_wasm32-unknown-unknown = None
+CC_wasm32_unknown_unknown = None
+TARGET_CC = None
+CC = Some("/usr/local/opt/llvm/bin/clang")
+CFLAGS_wasm32-unknown-unknown = None
+CFLAGS_wasm32_unknown_unknown = None
+TARGET_CFLAGS = None
+CFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some("false")
+CC_wasm32-unknown-unknown = None
+CC_wasm32_unknown_unknown = None
+TARGET_CC = None
+CC = Some("/usr/local/opt/llvm/bin/clang")
+CFLAGS_wasm32-unknown-unknown = None
+CFLAGS_wasm32_unknown_unknown = None
+TARGET_CFLAGS = None
+CFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+running: "/usr/local/opt/llvm/bin/clang" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "--target=wasm32-unknown-unknown" "-I" "depend/secp256k1/" "-I" "depend/secp256k1/include" "-I" "depend/secp256k1/src" "-I" "wasm-sysroot" "-Wall" "-Wextra" "-DSECP256K1_BUILD=1" "-DUSE_NUM_NONE=1" "-DUSE_FIELD_INV_BUILTIN=1" "-DUSE_SCALAR_INV_BUILTIN=1" "-DENABLE_MODULE_ECDH=1" "-DECMULT_WINDOW_SIZE=15" "-DUSE_EXTERNAL_DEFAULT_CALLBACKS=1" "-DUSE_FIELD_10X26=1" "-DUSE_SCALAR_8X32=1" "-o" "/Users/sean_conrad/Desktop/secret-template/target/wasm32-unknown-unknown/release/build/secp256k1-sys-c7867971ae9dc708/out/depend/secp256k1/contrib/lax_der_parsing.o" "-c" "depend/secp256k1/contrib/lax_der_parsing.c"
+exit status: 0
+running: "/usr/local/opt/llvm/bin/clang" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "--target=wasm32-unknown-unknown" "-I" "depend/secp256k1/" "-I" "depend/secp256k1/include" "-I" "depend/secp256k1/src" "-I" "wasm-sysroot" "-Wall" "-Wextra" "-DSECP256K1_BUILD=1" "-DUSE_NUM_NONE=1" "-DUSE_FIELD_INV_BUILTIN=1" "-DUSE_SCALAR_INV_BUILTIN=1" "-DENABLE_MODULE_ECDH=1" "-DECMULT_WINDOW_SIZE=15" "-DUSE_EXTERNAL_DEFAULT_CALLBACKS=1" "-DUSE_FIELD_10X26=1" "-DUSE_SCALAR_8X32=1" "-o" "/Users/sean_conrad/Desktop/secret-template/target/wasm32-unknown-unknown/release/build/secp256k1-sys-c7867971ae9dc708/out/depend/secp256k1/src/secp256k1.o" "-c" "depend/secp256k1/src/secp256k1.c"
+cargo:warning=In file included from depend/secp256k1/src/secp256k1.c:10:
+cargo:warning=In file included from depend/secp256k1/src/util.h:16:
+cargo:warning=wasm-sysroot/stdio.h:4:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=    4 | extern const unsigned char WASM32_INT_SIZE = sizeof(int);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:5:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=    5 | extern const unsigned char WASM32_INT_ALIGN = alignof(int);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:7:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=    7 | extern const unsigned char WASM32_UNSIGNED_INT_SIZE = sizeof(unsigned int);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:8:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=    8 | extern const unsigned char WASM32_UNSIGNED_INT_ALIGN = alignof(unsigned int);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:10:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=   10 | extern const unsigned char WASM32_SIZE_T_SIZE = sizeof(size_t);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:11:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=   11 | extern const unsigned char WASM32_SIZE_T_ALIGN = alignof(size_t);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:13:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=   13 | extern const unsigned char WASM32_UNSIGNED_CHAR_SIZE = sizeof(unsigned char);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:14:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=   14 | extern const unsigned char WASM32_UNSIGNED_CHAR_ALIGN = alignof(unsigned char);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:16:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=   16 | extern const unsigned char WASM32_PTR_SIZE = sizeof(void*);
+cargo:warning=      |                            ^
+cargo:warning=wasm-sysroot/stdio.h:17:28: warning: 'extern' variable has an initializer [-Wextern-initializer]
+cargo:warning=   17 | extern const unsigned char WASM32_PTR_ALIGN = alignof(void*);
+cargo:warning=      |                            ^
+cargo:warning=In file included from depend/secp256k1/src/secp256k1.c:12:
+cargo:warning=depend/secp256k1/src/field_impl.h:266:13: warning: unused function 'rustsecp256k1_v0_1_1_fe_inv_all_var' [-Wunused-function]
+cargo:warning=  266 | static void rustsecp256k1_v0_1_1_fe_inv_all_var(rustsecp256k1_v0_1_1_fe *r, const rustsecp256k1_v0_1_1_fe *a, size_t len) {
+cargo:warning=      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=In file included from depend/secp256k1/src/secp256k1.c:14:
+cargo:warning=depend/secp256k1/src/group_impl.h:202:13: warning: unused function 'rustsecp256k1_v0_1_1_ge_set_infinity' [-Wunused-function]
+cargo:warning=  202 | static void rustsecp256k1_v0_1_1_ge_set_infinity(rustsecp256k1_v0_1_1_ge *r) {
+cargo:warning=      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=depend/secp256k1/src/group_impl.h:691:12: warning: unused function 'rustsecp256k1_v0_1_1_gej_has_quad_y_var' [-Wunused-function]
+cargo:warning=  691 | static int rustsecp256k1_v0_1_1_gej_has_quad_y_var(const rustsecp256k1_v0_1_1_gej *a) {
+cargo:warning=      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=depend/secp256k1/src/group_impl.h:113:13: warning: unused function 'rustsecp256k1_v0_1_1_ge_set_gej_var' [-Wunused-function]
+cargo:warning=  113 | static void rustsecp256k1_v0_1_1_ge_set_gej_var(rustsecp256k1_v0_1_1_ge *r, rustsecp256k1_v0_1_1_gej *a) {
+cargo:warning=      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=depend/secp256k1/src/group_impl.h:272:12: warning: unused function 'rustsecp256k1_v0_1_1_gej_is_valid_var' [-Wunused-function]
+cargo:warning=  272 | static int rustsecp256k1_v0_1_1_gej_is_valid_var(const rustsecp256k1_v0_1_1_gej *a) {
+cargo:warning=      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=In file included from depend/secp256k1/src/secp256k1.c:15:
+cargo:warning=In file included from depend/secp256k1/src/ecmult_impl.h:16:
+cargo:warning=In file included from depend/secp256k1/src/ecmult.h:13:
+cargo:warning=depend/secp256k1/src/scratch.h:24:38: warning: unused function 'rustsecp256k1_v0_1_1_scratch_create' [-Wunused-function]
+cargo:warning=   24 | static rustsecp256k1_v0_1_1_scratch* rustsecp256k1_v0_1_1_scratch_create(const rustsecp256k1_v0_1_1_callback* error_callback, size_t max_size);
+cargo:warning=      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=depend/secp256k1/src/scratch.h:26:13: warning: unused function 'rustsecp256k1_v0_1_1_scratch_destroy' [-Wunused-function]
+cargo:warning=   26 | static void rustsecp256k1_v0_1_1_scratch_destroy(const rustsecp256k1_v0_1_1_callback* error_callback, rustsecp256k1_v0_1_1_scratch* scratch);
+cargo:warning=      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=In file included from depend/secp256k1/src/secp256k1.c:15:
+cargo:warning=depend/secp256k1/src/ecmult_impl.h:1167:12: warning: unused function 'rustsecp256k1_v0_1_1_ecmult_multi_var' [-Wunused-function]
+cargo:warning= 1167 | static int rustsecp256k1_v0_1_1_ecmult_multi_var(const rustsecp256k1_v0_1_1_callback* error_callback, const rustsecp256k1_v0_1_1_ecmult_context *ctx, rustsecp256k1_v0_1_1_scratch *scratch, rustsecp256k1_v0_1_1_gej *r, const rustsecp256k1_v0_1_1_scalar *inp_g_sc, rustsecp256k1_v0_1_1_ecmult_multi_callback cb, void *cbdata, size_t n) {
+cargo:warning=      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=depend/secp256k1/src/ecmult_impl.h:694:12: warning: unused function 'rustsecp256k1_v0_1_1_ecmult_strauss_batch_single' [-Wunused-function]
+cargo:warning=  694 | static int rustsecp256k1_v0_1_1_ecmult_strauss_batch_single(const rustsecp256k1_v0_1_1_callback* error_callback, const rustsecp256k1_v0_1_1_ecmult_context *actx, rustsecp256k1_v0_1_1_scratch *scratch, rustsecp256k1_v0_1_1_gej *r, const rustsecp256k1_v0_1_1_scalar *inp_g_sc, rustsecp256k1_v0_1_1_ecmult_multi_callback cb, void *cbdata, size_t n) {
+cargo:warning=      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=depend/secp256k1/src/ecmult_impl.h:981:15: warning: unused function 'rustsecp256k1_v0_1_1_pippenger_scratch_size' [-Wunused-function]
+cargo:warning=  981 | static size_t rustsecp256k1_v0_1_1_pippenger_scratch_size(size_t n_points, int bucket_window) {
+cargo:warning=      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=depend/secp256k1/src/ecmult_impl.h:1074:12: warning: unused function 'rustsecp256k1_v0_1_1_ecmult_pippenger_batch_single' [-Wunused-function]
+cargo:warning= 1074 | static int rustsecp256k1_v0_1_1_ecmult_pippenger_batch_single(const rustsecp256k1_v0_1_1_callback* error_callback, const rustsecp256k1_v0_1_1_ecmult_context *actx, rustsecp256k1_v0_1_1_scratch *scratch, rustsecp256k1_v0_1_1_gej *r, const rustsecp256k1_v0_1_1_scalar *inp_g_sc, rustsecp256k1_v0_1_1_ecmult_multi_callback cb, void *cbdata, size_t n) {
+cargo:warning=      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=21 warnings generated.
+exit status: 0
+AR_wasm32-unknown-unknown = None
+AR_wasm32_unknown_unknown = None
+TARGET_AR = None
+AR = Some("/usr/local/opt/llvm/bin/llvm-ar")
+running: "/usr/local/opt/llvm/bin/llvm-ar" "crs" "/Users/sean_conrad/Desktop/secret-template/target/wasm32-unknown-unknown/release/build/secp256k1-sys-c7867971ae9dc708/out/libsecp256k1.a" "/Users/sean_conrad/Desktop/secret-template/target/wasm32-unknown-unknown/release/build/secp256k1-sys-c7867971ae9dc708/out/depend/secp256k1/contrib/lax_der_parsing.o" "/Users/sean_conrad/Desktop/secret-template/target/wasm32-unknown-unknown/release/build/secp256k1-sys-c7867971ae9dc708/out/depend/secp256k1/src/secp256k1.o"
+exit status: 0
+cargo:rustc-link-lib=static=secp256k1
+cargo:rustc-link-search=native=/Users/sean_conrad/Desktop/secret-template/target/wasm32-unknown-unknown/release/build/secp256k1-sys-c7867971ae9dc708/out
