@@ -3,9 +3,12 @@ const { fromBase64, fromHex, toUtf8 } = require("@cosmjs/encoding");
 const { ethers } = require("hardhat");
 const secp256k1 = require("secp256k1/elliptic.js");
 const { randomBytes } = require("crypto");
+const fs = require("fs");
+const path = require("path");
 
 let provider = new miscreant.PolyfillCryptoProvider();
 let ciphertext;
+let my_pubKey;
 
 function getPrivateKey() {
   while (true) {
@@ -21,9 +24,32 @@ let secret_pubKey = new Uint8Array([
   112, 129, 218, 235, 64, 29, 110, 136, 43, 204, 103, 99, 20, 35, 55, 177,
 ]);
 
-// // get the public key in a compressed format
-let my_pubKey = secp256k1.publicKeyCreate(privKey);
-console.log("evm pub key: ", my_pubKey);
+// get the public key in a compressed format
+my_pubKey = secp256k1.publicKeyCreate(privKey);
+// console.log("evm pub key: ", my_pubKey);
+
+// Path to your .env file
+const envFilePath = path.join(__dirname, "../.env");
+
+// Read the current contents of the file
+let envContents = "";
+if (fs.existsSync(envFilePath)) {
+  envContents = fs.readFileSync(envFilePath, "utf8");
+}
+
+// Replace or append the MY_PUB_KEY variable
+const keyPattern = /^MY_PUB_KEY=.*/m;
+if (keyPattern.test(envContents)) {
+  // Replace the existing line
+  envContents = envContents.replace(keyPattern, `MY_PUB_KEY=${my_pubKey}`);
+} else {
+  // Append the new key, ensure it starts on a new line
+  envContents +=
+    (envContents.endsWith("\n") ? "" : "\n") + `MY_PUB_KEY=${my_pubKey}\n`;
+}
+
+// Write the updated contents back to the file
+fs.writeFileSync(envFilePath, envContents);
 
 const ecdhPointX = secp256k1.ecdh(secret_pubKey, privKey);
 
@@ -49,7 +75,7 @@ async function encrypt_evm() {
   const destinationChain = "secret"; // Replace with your desired destination chain
   const destinationAddress = "secret1d32su06845c9xvs2025p3e4wm9vdd7ftlwdlvj"; // Replace with your desired destination address
 
-  let msg = { test: "today is the 16th of november, 2023" };
+  let msg = { test: "Secret 4ever!!!" };
   let my_encrypted_message = await encrypt(msg);
   const SendReceiveEncrypt = await ethers.getContractFactory(
     "SendReceiveEncrypt"
@@ -63,7 +89,7 @@ async function encrypt_evm() {
     destinationAddress,
     my_encrypted_message,
     {
-      value: ethers.utils.parseEther("0.3"), // Adjust the amount as needed for gas
+      value: ethers.utils.parseEther("0.31"), // Adjust the amount as needed for gas
     }
   );
 
