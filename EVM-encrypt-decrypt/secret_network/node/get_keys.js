@@ -1,6 +1,6 @@
 import { SecretNetworkClient, Wallet } from "secretjs";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: "../../polygon/.env" });
 
 const wallet = new Wallet(process.env.MNEMONIC);
 
@@ -13,8 +13,8 @@ const secretjs = new SecretNetworkClient({
 
 // secret contract info
 let contractCodeHash =
-  "02f847147ed8fa44ad9f7b7d6cbba9737c48582bb3ef277fa29ef3a2d50a9555";
-let contractAddress = "secret1d32su06845c9xvs2025p3e4wm9vdd7ftlwdlvj";
+  "86948e8c7f72343a4801bf6022aab4ca780b1ffa6cbb3423828f04562d7df3b0";
+let contractAddress = "secret1zj4fuh42k6h2rpcnalq5wuzxys8gnqxcuhts33";
 
 let get_keys = async () => {
   let query = await secretjs.query.compute.queryContract({

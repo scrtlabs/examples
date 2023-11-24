@@ -20,8 +20,8 @@ function getPrivateKey() {
 let privKey = getPrivateKey();
 
 let secret_pubKey = new Uint8Array([
-  3, 237, 113, 94, 12, 27, 61, 95, 66, 244, 64, 230, 104, 252, 254, 74, 140,
-  112, 129, 218, 235, 64, 29, 110, 136, 43, 204, 103, 99, 20, 35, 55, 177,
+  2, 104, 48, 161, 13, 111, 158, 104, 127, 247, 41, 86, 51, 182, 130, 236, 211,
+  221, 131, 107, 252, 151, 228, 19, 153, 252, 169, 84, 186, 154, 203, 40, 138,
 ]);
 
 // get the public key in a compressed format
@@ -71,11 +71,11 @@ let encrypt = async (msg, associatedData = []) => {
 
 async function encrypt_evm() {
   const sendReceiveEncryptAddress =
-    "0x0DC75cB5CE7335fa335b03F34d6f9a7697fA9336"; // Replace with your deployed contract's address
+    "0xd100A79C25bBFFb08AaFa7E8000cd10667397967"; // Replace with your deployed contract's address
   const destinationChain = "secret"; // Replace with your desired destination chain
-  const destinationAddress = "secret1d32su06845c9xvs2025p3e4wm9vdd7ftlwdlvj"; // Replace with your desired destination address
+  const destinationAddress = "secret1zj4fuh42k6h2rpcnalq5wuzxys8gnqxcuhts33"; // Replace with your desired destination address
 
-  let msg = { jazz_hands: "jazz hands" };
+  let msg = { date: "nov 24" };
   let my_encrypted_message = await encrypt(msg);
   const SendReceiveEncrypt = await ethers.getContractFactory(
     "SendReceiveEncrypt"

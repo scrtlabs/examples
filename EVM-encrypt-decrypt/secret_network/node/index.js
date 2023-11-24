@@ -1,7 +1,7 @@
 import { SecretNetworkClient, Wallet } from "secretjs";
 import * as fs from "fs";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: "../../polygon/.env" });
 
 const wallet = new Wallet(process.env.MNEMONIC);
 
