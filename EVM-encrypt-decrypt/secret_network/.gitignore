@@ -4,7 +4,6 @@
 Cargo.lock
 contract.wasm*
 contract.wasm.gz*
-.env*
 /node_modules
 /node_modules*
 node_modules*
