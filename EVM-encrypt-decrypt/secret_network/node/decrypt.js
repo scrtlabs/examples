@@ -55,6 +55,8 @@ let get_decrypted = async () => {
   console.log(query);
 };
 
+get_decrypted();
+
 // decrypt the stored encrypted data sent from EVM
 let try_decrypt = async () => {
   let encrypted_data = await get_stored_message();
@@ -78,4 +80,4 @@ let try_decrypt = async () => {
       get_decrypted();
     });
 };
-try_decrypt();
+// try_decrypt();

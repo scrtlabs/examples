@@ -75,7 +75,7 @@ async function encrypt_evm() {
   const destinationChain = "secret"; // Replace with your desired destination chain
   const destinationAddress = "secret1d32su06845c9xvs2025p3e4wm9vdd7ftlwdlvj"; // Replace with your desired destination address
 
-  let msg = { test: "Secret 4ever!!!" };
+  let msg = { jazz_hands: "jazz hands" };
   let my_encrypted_message = await encrypt(msg);
   const SendReceiveEncrypt = await ethers.getContractFactory(
     "SendReceiveEncrypt"
