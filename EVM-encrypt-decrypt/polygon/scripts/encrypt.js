@@ -75,7 +75,7 @@ async function encrypt_evm() {
   const destinationChain = "secret"; // Replace with your desired destination chain
   const destinationAddress = "secret1zj4fuh42k6h2rpcnalq5wuzxys8gnqxcuhts33"; // Replace with your desired destination address
 
-  let msg = { date: "nov 24" };
+  let msg = { date: "nov 27" };
   let my_encrypted_message = await encrypt(msg);
   const SendReceiveEncrypt = await ethers.getContractFactory(
     "SendReceiveEncrypt"
@@ -89,7 +89,7 @@ async function encrypt_evm() {
     destinationAddress,
     my_encrypted_message,
     {
-      value: ethers.utils.parseEther("0.31"), // Adjust the amount as needed for gas
+      value: ethers.utils.parseEther("0.35"), // Adjust the amount as needed for gas
     }
   );
 
