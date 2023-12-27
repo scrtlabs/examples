@@ -1,7 +1,5 @@
 use crate::random::get_random_msg;
-use cosmwasm_std::{
-    entry_point, to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdError, StdResult,
-};
+use cosmwasm_std::{entry_point, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdError, StdResult, to_json_binary};
 use cw_storage_plus::Item;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
@@ -22,7 +20,7 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
         QueryMsg::LastRandom {} => {
             let rand_value = get_rand_result(deps.storage)?;
 
-            Ok(to_binary(&LastRandomResponse {
+            Ok(to_json_binary(&LastRandomResponse {
                 height: rand_value.0,
                 random: rand_value.1,
             })?)
