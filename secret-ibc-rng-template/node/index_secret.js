@@ -6,17 +6,18 @@ dotenv.config();
 
 const wallet = new Wallet(process.env.MNEMONIC);
 
-const contract_wasm = fs.readFileSync(
-  "../proxy/target/wasm32-unknown-unknown/release/secret_ibc_rng_template.wasm"
-);
+//const contract_wasm = fs.readFileSync(
+//  "../proxy/target/wasm32-unknown-unknown/release/secret_ibc_rng_template.wasm"
+//);
 // const codeId = 22042;
 // const contractCodeHash =
 //   "4350e9119e47e4f5a2bcfc84f12ec062fe927a44253c0bc9cea08fc5a0b4fe90";
 // const contractAddress = "secret1fn7v9r60u9rqgwwxmwn8hhe80ka055pultkd92";
-
+const codeId = 1442;
+const contractCodeHash= "91ff04d979ee3b7c28953e970efe9d6f28c8887045b579721ec5d0b5cabd8be0"
 const secretjs = new SecretNetworkClient({
-  chainId: "pulsar-3",
-  url: "https://api.pulsar3.scrttestnet.com",
+  chainId: "secret-4",
+  url: "https://scrt-api.dalnim.finance",
   wallet: wallet,
   walletAddress: wallet.address,
 });
@@ -24,6 +25,7 @@ const secretjs = new SecretNetworkClient({
 const myAddress = wallet.address;
 
 let upload_contract = async () => {
+  /*
   let tx = await secretjs.tx.compute.storeCode(
     {
       sender: wallet.address,
@@ -41,6 +43,9 @@ let upload_contract = async () => {
       .value
   );
 
+   */
+
+ // const codeId =1442;
   console.log("codeId: ", codeId);
 
   // const contractCodeHash = (
@@ -48,7 +53,7 @@ let upload_contract = async () => {
   // ).code_hash;
   // console.log(`Contract hash: ${contractCodeHash}`);
 
-  console.log(tx.arrayLog);
+ // console.log(tx.arrayLog);
 };
 
 // upload_contract();
@@ -62,10 +67,10 @@ let instantiate_contract = async () => {
       sender: wallet.address,
       code_hash: contractCodeHash,
       init_msg: initMsg,
-      label: "IBC Template" + Math.ceil(Math.random() * 10000),
+      label: "PFC Random Proxy" + Math.ceil(Math.random() * 10000),
     },
     {
-      gasLimit: 1_000_000,
+      gasLimit: 100_000,
     }
   );
 
@@ -77,4 +82,4 @@ let instantiate_contract = async () => {
   console.log(contractAddress);
 };
 
-// instantiate_contract();
+await instantiate_contract();
