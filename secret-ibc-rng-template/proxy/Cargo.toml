@@ -30,23 +30,26 @@ stargate = []
 ibc3 = ["stargate"]
 
 [dependencies]
-cosmwasm-std = { git = "https://github.com/scrtlabs/cosmwasm", default-features = false, rev = "8ee395ba033c392d7170c971df97f085edaed2d9", package = "secret-cosmwasm-std", features = [
+cosmwasm-std = { git = "https://github.com/scrtlabs/cosmwasm", default-features = false, rev = "55ed7ffc4110124c8bf24fc59915cc209e558e38", package = "secret-cosmwasm-std", features = [
+#"6c639b5a85ef66f87d72284dc68ae051eab09007"
+#"8ee395ba033c392d7170c971df97f085edaed2d9"
+#"55ed7ffc4110124c8bf24fc59915cc209e558e38"
     "stargate",
     "ibc3",
     "random",
 ] }
-cosmwasm-storage = { git = "https://github.com/scrtlabs/cosmwasm", rev = "8ee395ba033c392d7170c971df97f085edaed2d9", package = "secret-cosmwasm-storage" }
+cosmwasm-storage = { git = "https://github.com/scrtlabs/cosmwasm", rev = "55ed7ffc4110124c8bf24fc59915cc209e558e38", package = "secret-cosmwasm-storage" }
 
-schemars = "0.8.1"
-serde = { version = "1.0.114", default-features = false, features = ["derive"] }
-secret-toolkit = { version = "0.7.0" }
-secret-toolkit-crypto = { version = "0.7.0", default-features = false, features = [
+schemars = "0.8.16"
+serde = { version = "1.0.193", default-features = false, features = ["derive"] }
+secret-toolkit = { version = "0.10.0" }
+secret-toolkit-crypto = { version = "0.10.0", default-features = false, features = [
     "rand",
     "hash",
 ] }
 hex = "0.4.3"
-serde-json-wasm = "0.5.0"
+serde-json-wasm = "1.0.0"
 
 [patch.crates-io]
-cosmwasm-std = { git = "https://github.com/scrtlabs/cosmwasm", rev = "8ee395ba033c392d7170c971df97f085edaed2d9", package = "secret-cosmwasm-std" }
-cosmwasm-storage = { git = "https://github.com/scrtlabs/cosmwasm", rev = "8ee395ba033c392d7170c971df97f085edaed2d9", package = "secret-cosmwasm-storage" }
+cosmwasm-std = { git = "https://github.com/scrtlabs/cosmwasm", rev = "55ed7ffc4110124c8bf24fc59915cc209e558e38", package = "secret-cosmwasm-std" }
+cosmwasm-storage = { git = "https://github.com/scrtlabs/cosmwasm", rev = "55ed7ffc4110124c8bf24fc59915cc209e558e38", package = "secret-cosmwasm-storage" }

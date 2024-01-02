@@ -28,8 +28,8 @@ use cosmwasm_std::{
 use crate::msg::{CallbackInfo, ExecuteMsg, InstantiateMsg, PacketMsg, QueryMsg, RandomCallback};
 use crate::state::{load_callback, save_callback, Channel, StoredRandomAnswer};
 // use crate::utils::verify_callback;
-use secret_toolkit_crypto::Prng;
-
+//use secret_toolkit_crypto::Prng;
+use secret_toolkit_crypto::ContractPrng;
 // Define a constant for the IBC app version
 pub const IBC_APP_VERSION: &str = "ibc-v1";
 // Define a constant for the packet lifetime in seconds
@@ -118,6 +118,7 @@ pub fn ibc_channel_connect(
     _env: Env,
     msg: IbcChannelConnectMsg,
 ) -> StdResult<IbcBasicResponse> {
+    #[allow(unreachable_patterns)]
     match msg {
         IbcChannelConnectMsg::OpenAck { channel, .. } => {
             // save channel to state
@@ -161,7 +162,7 @@ pub fn ibc_packet_receive(
             // todo: handle random not in block for some reason?
             let random = env.block.random.unwrap();
 
-            let mut rng = Prng::new(random.as_slice(), job_id.as_bytes());
+            let mut rng = ContractPrng::new(random.as_slice(), job_id.as_bytes());
             let rand_for_job = hex::encode(rng.rand_bytes());
 
             let res = PacketMsg::RandomResponse {
