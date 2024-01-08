@@ -3,8 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "index_juno.js",
+  "main": "index_secret.js",
   "scripts": {
+    "main": "node  ./index_secret.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

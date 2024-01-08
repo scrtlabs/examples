@@ -1,9 +1,10 @@
-use crate::contract::RandProviderContractInfo;
-use crate::random::ExecuteMsg::RequestRandom;
+use cosmwasm_std::{Binary, ContractInfo, CosmosMsg, Env, from_json, StdResult, to_json_binary};
 use cosmwasm_std::WasmMsg::Execute;
-use cosmwasm_std::{from_binary, to_binary, Binary, ContractInfo, CosmosMsg, Env, StdResult};
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
+
+use crate::contract::RandProviderContractInfo;
+use crate::random::ExecuteMsg::RequestRandom;
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
@@ -32,7 +33,7 @@ pub fn get_random_msg(
 ) -> StdResult<CosmosMsg> {
     Ok(CosmosMsg::Wasm(Execute {
         contract_addr: provider.address.to_string(),
-        msg: to_binary(&RequestRandom {
+        msg: to_json_binary(&RequestRandom {
             job_id,
             callback: CallbackInfo {
                 contract: env.contract,
@@ -44,7 +45,7 @@ pub fn get_random_msg(
 }
 
 pub fn parse_random_response(msg: Binary) -> StdResult<(String, String, Option<Binary>)> {
-    let parsed_msg: RandomCallback = from_binary(&msg)?;
+    let parsed_msg: RandomCallback = from_json(msg)?;
 
     match parsed_msg {
         RandomCallback::RandomResponse {
