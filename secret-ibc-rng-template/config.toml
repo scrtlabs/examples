@@ -1,0 +1,85 @@
+[global]
+log_level = 'info'
+
+[mode]
+
+[mode.clients]
+enabled = true
+refresh = true
+misbehaviour = true
+
+[mode.connections]
+enabled = true
+
+[mode.channels]
+enabled = true
+
+[mode.packets]
+enabled = true
+clear_interval = 100
+clear_on_start = true
+tx_confirmation = true
+
+[telemetry]
+enabled = true
+host = '127.0.0.1'
+port = 3001
+
+[[chains]]
+id = 'pulsar-3'
+type = 'CosmosSdk'
+rpc_addr = 'https://rpc.pulsar.scrttestnet.com:443'
+grpc_addr = 'http://grpcbin.pulsar.scrttestnet.com:9099'
+event_source = { mode = 'push', url = 'wss://rpc.pulsar.scrttestnet.com:443/websocket', batch_delay = '500ms' }
+rpc_timeout = '10s'
+account_prefix = 'secret'
+key_name = 'wallet'
+store_prefix = 'ibc'
+default_gas = 100000
+max_gas = 400000
+gas_multiplier = 1.1
+max_msg_num = 30
+max_tx_size = 180000
+clock_drift = '5s'
+max_block_time = '30s'
+memo_prefix = ''
+sequential_batch_tx = false
+trusting_period = '16hrs'
+
+[chains.trust_threshold]
+numerator = '1'
+denominator = '3'
+
+[chains.gas_price]
+price = 0.1
+denom = 'uscrt'
+
+[chains.packet_filter]
+policy = 'allow'
+list = [['wasm.*', '*'], ['transfer', '*']]
+
+[[chains]]
+id = 'uni-6'
+rpc_addr = 'https://juno-testnet-rpc.polkachu.com:443'
+grpc_addr = 'http://juno-testnet-grpc.polkachu.com:12690'
+event_source = { mode = 'push', url = 'wss://juno-testnet-rpc.polkachu.com:443/websocket', batch_delay = '500ms' }
+rpc_timeout = '10s'
+account_prefix = 'juno'
+key_name = 'wallet'
+address_type = { derivation = 'cosmos' }
+store_prefix = 'ibc'
+default_gas = 1800000
+max_gas = 9000000
+gas_price = { price = 0.026, denom = 'ujunox' }
+gas_multiplier = 1.2
+max_msg_num = 30
+max_tx_size = 179999
+clock_drift = '15s'
+max_block_time = '10s'
+trusting_period = '448h'
+memo_prefix = 'relayed by CryptoCrew Validators'
+trust_threshold = { numerator = '1', denominator = '3' }
+
+[chains.packet_filter]
+policy = 'allow'
+list = [['wasm.*', '*'], ['transfer', '*']]

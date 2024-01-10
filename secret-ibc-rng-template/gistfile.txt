@@ -1,0 +1,27 @@
+junod tx wasm instantiate 4101 '{}' --label 'juno-proxy' --no-admin --from seanradJuno --gas 200000 -y --chain-id uni-6 --node https://rpc.uni.junonetwork.io:443 --gas-prices 0.025ujunox
+
+junod query tx 9D06756888476D266E95CC38DD0676C160FD87D41C3071682ADFC6CE2AB4ADEF --node https://rpc.uni.junonetwork.io:443
+
+juno proxy: juno1r9awn4hek5s8kuvfm46kh775csqvhuzs00j8c0djaul5729s48usht3j0s
+
+junod tx wasm instantiate 4102 '{"init": {"rand_provider": { "address": "juno1r9awn4hek5s8kuvfm46kh775csqvhuzs00j8c0djaul5729s48usht3j0s", "code_hash": ""}}}' --label 'juno-consumer' --no-admin --from seanradJuno --gas 300000 -y --chain-id uni-6 --node https://rpc.uni.junonetwork.io:443 --gas-prices 0.025ujunox
+
+junod query tx 43E4FD2907C344E6CBB26808F28892BDB5601B3B960A46E191FF49D1A74DEFBD --node https://rpc.uni.junonetwork.io:443
+
+consumer address: juno1sznkzlleqlxw8lp8hy66l0zg0fe8khgkeyqlfmlvdkutgxjw69xq7jm32t
+
+secret address:
+secret1k50n89h4vpanwaclhuzv0h20r8rpx6swy33mm0
+5a0f35c25f181593c91b60259cb3c1f5ad6288cccb5bd0a9435619fc33bfefeb
+
+hermes keys add --hd-path "m/44'/529'/0'/0/0" --mnemonic-file a.mnemonic --chain pulsar-3
+
+hermes create connection --a-chain uni-6 --a-client 07-tendermint-739 --b-client 07-tendermint-6
+
+hermes create channel --a-chain uni-6 --a-connection connection-823 --a-port wasm.juno1r9awn4hek5s8kuvfm46kh775csqvhuzs00j8c0djaul5729s48usht3j0s --b-port wasm.secret1k50n89h4vpanwaclhuzv0h20r8rpx6swy33mm0
+
+junod tx wasm execute --from seanradJuno juno1sznkzlleqlxw8lp8hy66l0zg0fe8khgkeyqlfmlvdkutgxjw69xq7jm32t '{"do_something": {}}' --gas 300000 -y --chain-id uni-6 --node https://rpc.uni.junonetwork.io:443 --gas-prices 0.025ujunox
+
+junod query wasm contract-state smart juno1sznkzlleqlxw8lp8hy66l0zg0fe8khgkeyqlfmlvdkutgxjw69xq7jm32t '{"last_random": {}}' --chain-id uni-6 --node https://rpc.uni.junonetwork.io:443
+
+junod query tx EA8185D9458ECC2EFABAD608425F6D79EF096FD16B5C7D5FB1F21350D5CB743B --node https://rpc.uni.junonetwork.io:443

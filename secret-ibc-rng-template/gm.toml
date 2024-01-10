@@ -17,7 +17,7 @@ telemetry_enabled = true
 telemetry_host = "127.0.0.1"
 telemetry_port = 3001
 
-[pulsar-2]
+[pulsar-3]
 ports_start_at = 27010
 
 [uni-6]
@@ -25,7 +25,7 @@ ports_start_at = 27020
 
 [node-0]
 add_to_hermes = true
-network = "pulsar-2"
+network = "pulsar-3"
 ports_start_at = 27030
 
 [node-1]
