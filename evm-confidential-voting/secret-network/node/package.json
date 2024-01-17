@@ -1,0 +1,22 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cosmjs/encoding": "^0.31.3",
+    "dotenv": "^16.3.1",
+    "eccrypto": "^1.1.6",
+    "eciesjs": "^0.4.5",
+    "miscreant": "^0.3.2",
+    "secp256k1": "^5.0.0",
+    "secretjs": "^1.12.0",
+    "secure-random": "^1.1.2"
+  }
+}

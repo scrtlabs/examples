@@ -24,4 +24,4 @@ junod tx wasm execute --from seanradJuno juno1sznkzlleqlxw8lp8hy66l0zg0fe8khgkey
 
 junod query wasm contract-state smart juno1sznkzlleqlxw8lp8hy66l0zg0fe8khgkeyqlfmlvdkutgxjw69xq7jm32t '{"last_random": {}}' --chain-id uni-6 --node https://rpc.uni.junonetwork.io:443
 
-junod query tx EA8185D9458ECC2EFABAD608425F6D79EF096FD16B5C7D5FB1F21350D5CB743B --node https://rpc.uni.junonetwork.io:443
+junod query tx 9885185748E9CE9953DD088D92BEC54B582970B138FD6B817E0EA4762097AAFE --node https://rpc.uni.junonetwork.io:443
