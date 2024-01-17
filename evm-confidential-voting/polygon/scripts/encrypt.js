@@ -6,17 +6,16 @@ const dotenv = require("dotenv");
 let provider = new miscreant.PolyfillCryptoProvider();
 let ciphertext;
 
-let secret_pubKey = new Uint8Array([
-  2, 179, 70, 193, 215, 156, 85, 32, 85, 91, 17, 253, 220, 243, 214, 71, 14,
-  232, 120, 168, 229, 62, 41, 171, 127, 88, 38, 17, 109, 194, 206, 109, 52,
-]);
+let publicKey = dotenv.config().parsed.SECRET_PUBLIC_KEY;
+let publicByteArray = publicKey.split(",").map((num) => parseInt(num, 10));
+let publicKeyUint8Array = new Uint8Array(publicByteArray);
 
 let privateKey = dotenv.config().parsed.ECC_PRIVATE_KEY;
-let byteArray = privateKey.split(",").map((num) => parseInt(num, 10));
-let privateKeyUint8Array = new Uint8Array(byteArray);
+let privateByteArray = privateKey.split(",").map((num) => parseInt(num, 10));
+let privateKeyUint8Array = new Uint8Array(privateByteArray);
 // console.log(privateKeyUint8Array);
 
-const ecdhPointX = secp256k1.ecdh(secret_pubKey, privateKeyUint8Array);
+const ecdhPointX = secp256k1.ecdh(publicKeyUint8Array, privateKeyUint8Array);
 
 let keyData = Uint8Array.from(ecdhPointX);
 

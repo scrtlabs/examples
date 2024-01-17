@@ -8,8 +8,8 @@ async function create_proposal() {
   let PrivateVoting = await hre.ethers.getContractFactory("PrivateVoting");
   const privateVoting = await PrivateVoting.attach(privateVotingAddress);
 
-  const proposal_description = "Is this proposal id 4";
-  const proposal_quorum = 2;
+  const proposal_description = "Do you love Secret?";
+  const proposal_quorum = 1;
 
   const tx = await privateVoting.createProposal(
     proposal_description,

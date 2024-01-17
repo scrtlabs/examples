@@ -15,7 +15,7 @@ const secretjs = new SecretNetworkClient({
 let contractCodeHash = process.env.CODE_HASH;
 let contractAddress = process.env.SECRET_ADDRESS;
 
-let query_tallied_votes = async () => {
+let queryDecryptedVotes = async () => {
   let query = await secretjs.query.compute.queryContract({
     contract_address: contractAddress,
     query: {
@@ -27,4 +27,8 @@ let query_tallied_votes = async () => {
   console.log(query);
 };
 
-query_tallied_votes();
+// query_tallied_votes();
+
+module.exports = {
+  queryDecryptedVotes,
+};

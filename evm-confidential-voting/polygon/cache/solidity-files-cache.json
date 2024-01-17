@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/sean_conrad/Desktop/private-voting/polygon/contracts/PrivateVoting.sol": {
+    "/Users/sean_conrad/Documents/developer/secret/examples/evm-confidential-voting/polygon/contracts/PrivateVoting.sol": {
       "lastModificationDate": 1705429679280,
       "contentHash": "94a13359e6d1d1622d0b142f33f09e27",
       "sourceName": "contracts/PrivateVoting.sol",
