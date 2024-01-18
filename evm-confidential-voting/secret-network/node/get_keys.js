@@ -23,8 +23,9 @@ let get_keys = async () => {
     },
     code_hash: contractCodeHash,
   });
-  const publicKeyString = query.public_key.join(",");
-  console.log(publicKeyString);
+  // const publicKeyString = query.public_key.join(",");
+  // console.log(publicKeyString);
+  console.log(query);
 };
 
 get_keys();

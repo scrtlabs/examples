@@ -1,0 +1,203 @@
+/* Base settings */
+body,
+input,
+button,
+h1,
+h2,
+h3,
+li {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+/* Reset margin and padding for consistent cross-browser behavior */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* App container */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  padding-top: 40px;
+}
+
+/* Header styles */
+.header {
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+/* Columns container */
+.columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  height: calc(100vh - 80px);
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+/* Individual column styling */
+.column {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border: 2px solid white;
+  border-radius: 10px;
+  overflow-y: auto; /* Add this line to make the column scrollable */
+  max-height: 400px; /* Adjust the max height as needed */
+}
+
+/* Proposal list with custom scrollbar */
+.proposal-list {
+  max-height: calc(100% - 40px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #2a2a2a;
+  padding: 0 20px;
+  color: white;
+}
+
+/* Webkit scrollbar styles */
+.proposal-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.proposal-list::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+.proposal-list::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+/* Text input styles */
+input {
+  background-color: #2a2a2a;
+  border: 1px solid #2a9d8f;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 80%;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #48b9a7;
+  box-shadow: 0 0 8px 0 #48b9a7;
+}
+
+/* Button styles */
+button {
+  background: linear-gradient(145deg, #2a9d8f, #2f7a78);
+  border: none;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 8px;
+  margin: 4px 2px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+button:hover {
+  background: linear-gradient(155deg, #3cba96, #2f7a78);
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
+}
+
+/* List item styles */
+li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Text styles */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.connect-wallet {
+  position: absolute;
+  width: 80px;
+  top: 10px;
+  right: 30px;
+  font-size: 2px;
+}
+
+.proposal-text {
+  text-align: left;
+  margin-bottom: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Vote button container */
+.vote-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+/* Media queries for mobile optimization */
+@media (max-width: 768px) {
+  .columns {
+    flex-direction: column;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .column {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border: 2px solid white;
+    border-radius: 10px;
+    overflow-y: auto; /* Add this line to make the column scrollable */
+  }
+
+  input[type="text"],
+  button {
+    width: 90%; /* Increase touch target size */
+    margin-top: 10px;
+    padding: 12px; /* Increase padding for better touch interaction */
+  }
+
+  h1 {
+    font-size: 1.5em; /* Adjust font size for smaller screens */
+  }
+
+  .proposal-list {
+    max-height: 300px; /* Adjust the height of the scrollable list */
+    padding: 0 10px;
+  }
+
+  .proposal-list::-webkit-scrollbar {
+    width: 8px; /* Make scrollbar thinner on mobile */
+  }
+}

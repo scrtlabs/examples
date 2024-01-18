@@ -1,8 +1,6 @@
 const { SecretNetworkClient, Wallet } = require("secretjs");
-const dotenv = require("dotenv");
-dotenv.config({ path: "../../polygon/.env" });
 
-const wallet = new Wallet(process.env.MNEMONIC);
+const wallet = new Wallet(process.env.REACT_APP_MNEMONIC);
 
 const secretjs = new SecretNetworkClient({
   chainId: "pulsar-3",
@@ -12,23 +10,21 @@ const secretjs = new SecretNetworkClient({
 });
 
 // secret contract info
-let contractCodeHash = process.env.CODE_HASH;
-let contractAddress = process.env.SECRET_ADDRESS;
+let contractCodeHash = process.env.REACT_APP_CODE_HASH;
+let contractAddress = process.env.REACT_APP_SECRET_ADDRESS;
 
-let query_tallied_votes = async () => {
+let queryDecryptedVotes = async () => {
   let query = await secretjs.query.compute.queryContract({
     contract_address: contractAddress,
     query: {
-      get_results: {},
+      get_votes: {},
     },
     code_hash: contractCodeHash,
   });
-
   console.log(query);
+  return query;
 };
 
-query_tallied_votes();
-
 module.exports = {
-  query_tallied_votes,
+  queryDecryptedVotes,
 };

@@ -27,7 +27,7 @@ let queryDecryptedVotes = async () => {
   console.log(query);
 };
 
-// query_tallied_votes();
+queryDecryptedVotes();
 
 module.exports = {
   queryDecryptedVotes,

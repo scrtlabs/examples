@@ -9,7 +9,7 @@ require("dotenv").config();
 const privateVotingAddress = process.env.CONTRACT_ADDRESS; // Replace with your deployed contract's address
 
 async function decrypt_votes() {
-  let encrypted_vote = await queryVotes(1);
+  let encrypted_vote = await queryVotes(2);
   await decrypt(encrypted_vote);
   await queryDecryptedVotes();
 }

@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-weight: 700; /* Use a heavier weight for headings */
+}

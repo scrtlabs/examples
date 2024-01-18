@@ -7,7 +7,7 @@ require("dotenv").config();
 const privateVotingAddress = process.env.CONTRACT_ADDRESS; // Replace with your deployed contract's address
 
 async function vote() {
-  let proposal = await getProposalById(1);
+  let proposal = await getProposalById(2);
 
   let msg = {
     answer: "yes",
