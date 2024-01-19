@@ -6,11 +6,9 @@ const {
 const { decrypt } = require("../../secret-network/node/decrypt.js");
 require("dotenv").config();
 
-const privateVotingAddress = process.env.CONTRACT_ADDRESS; // Replace with your deployed contract's address
-
 async function decrypt_votes() {
-  let encrypted_vote = await queryVotes(2);
-  await decrypt(encrypted_vote);
+  // let encrypted_vote = await queryVotes(1);
+  await decrypt([]);
   await queryDecryptedVotes();
 }
 decrypt_votes();

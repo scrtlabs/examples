@@ -1,4 +1,4 @@
-import { SecretNetworkClient, Wallet } from "secretjs";
+const { SecretNetworkClient, Wallet } = require("secretjs");
 
 const wallet = new Wallet(process.env.REACT_APP_MNEMONIC);
 
@@ -35,4 +35,6 @@ const decrypt = async (encryptedVotes) => {
   console.log(tx);
 };
 
-export default decrypt;
+module.exports = {
+  decrypt,
+};

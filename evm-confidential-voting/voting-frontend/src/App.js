@@ -63,9 +63,34 @@ function App() {
     const provider = new Web3Provider(window.ethereum);
     const contract = new Contract(contractAddress, contractABI, provider);
 
+    // Listen for the 'ProposalCreated' event
+    contract.on("ProposalCreated", (newProposalId) => {
+      addNewProposal(newProposalId.toNumber());
+    });
+
+    // Existing listener for 'VotingClosed'
     contract.on("VotingClosed", (proposalId) => {
       updateProposals(proposalId.toNumber());
     });
+  };
+
+  const addNewProposal = async (newProposalId) => {
+    const provider = new Web3Provider(window.ethereum);
+    const contract = new Contract(contractAddress, contractABI, provider);
+
+    // Fetch the new proposal details using the correct function from the contract
+    const newProposalData = await contract.getProposal(newProposalId);
+
+    // Create a proposal object to match the structure used in your app
+    const newProposal = {
+      id: newProposalData[0],
+      description: newProposalData[1],
+      quorum: newProposalData[2],
+      voteCount: newProposalData[3],
+      // Add more fields here if needed
+    };
+
+    setOpenProposals([...openProposals, newProposal]);
   };
 
   const updateProposals = async (closedProposalId) => {
@@ -89,6 +114,7 @@ function App() {
     const contract = new Contract(contractAddress, contractABI, provider);
 
     contract.removeAllListeners("VotingClosed");
+    contract.removeAllListeners("ProposalCreated"); // Remove listener for 'ProposalCreated'
   };
 
   return (

@@ -201,3 +201,8 @@ h1 {
     width: 8px; /* Make scrollbar thinner on mobile */
   }
 }
+
+.proposal {
+  padding: 10px; /* Adjust the padding value as needed */
+  margin-bottom: 10px; /* Adds space between each proposal */
+}

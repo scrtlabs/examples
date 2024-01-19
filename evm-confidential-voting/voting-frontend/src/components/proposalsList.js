@@ -24,7 +24,7 @@ const ProposalsList = ({ proposals, contractABI, contractAddress }) => {
 
       let msg = {
         answer: choice,
-        proposal_id: proposal.id.toString(),
+        proposal_id: parseInt(proposal.id, 10),
         proposal_description: proposal.description,
         salt: Math.random(),
       };
