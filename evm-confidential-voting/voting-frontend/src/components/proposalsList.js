@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Web3Provider } from "@ethersproject/providers";
 import { Contract } from "ethers";
 import encrypt from "../functions/encrypt.js";
 
-const ProposalsList = ({ proposals, contractABI, contractAddress }) => {
-  const [voteChoice, setVoteChoice] = useState(""); // State to store the selected vote choice
-
+const ProposalsList = ({ proposals, contractABI, contractAddress, onVote }) => {
   const handleVote = async (proposal, choice) => {
     try {
       if (!window.ethereum) {
@@ -29,12 +27,15 @@ const ProposalsList = ({ proposals, contractABI, contractAddress }) => {
         salt: Math.random(),
       };
       let my_encrypted_message = await encrypt(msg);
-      console.log(choice, my_encrypted_message);
-      console.log("vote: ", msg);
+      // console.log(choice, my_encrypted_message);
+      // console.log("vote: ", msg);
 
       // Call the vote function with the encrypted message
       const tx = await contract.vote(proposal.id, my_encrypted_message);
       await tx.wait();
+      console.log("vote: ", tx);
+      onVote();
+
       alert("Vote submitted successfully!");
     } catch (error) {
       console.error(error);
@@ -42,28 +43,26 @@ const ProposalsList = ({ proposals, contractABI, contractAddress }) => {
     }
   };
 
+  // Check if proposals are present and render accordingly
+  const renderProposals = () => {
+    if (!proposals || proposals.length === 0) {
+      return <p>No open proposals found.</p>;
+    }
+
+    return proposals.map((proposal, index) => (
+      <li key={index}>
+        <strong>Description:</strong> {JSON.stringify(proposal.description)}
+        <br />
+        <button onClick={() => handleVote(proposal, "yes")}>Vote Yes</button>
+        <button onClick={() => handleVote(proposal, "no")}>Vote No</button>
+      </li>
+    ));
+  };
+
   return (
     <div>
       <h2>Open Proposals</h2>
-      <ul style={{ listStyleType: "none", padding: 0 }}>
-        {proposals ? (
-          proposals.map((proposal, index) => (
-            <li key={index}>
-              <strong>Description:</strong>{" "}
-              {JSON.stringify(proposal.description)}
-              <br />
-              <button onClick={() => handleVote(proposal, "yes")}>
-                Vote Yes
-              </button>
-              <button onClick={() => handleVote(proposal, "no")}>
-                Vote No
-              </button>
-            </li>
-          ))
-        ) : (
-          <p>No open proposals found.</p>
-        )}
-      </ul>
+      <ul style={{ listStyleType: "none", padding: 0 }}>{renderProposals()}</ul>
     </div>
   );
 };

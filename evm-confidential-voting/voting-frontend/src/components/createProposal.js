@@ -29,7 +29,7 @@ const CreateProposal = ({ contractABI, contractAddress }) => {
       const receipt = await tx.wait();
 
       // Check the confirmation count
-      const confirmations = receipt.confirmations;
+      const confirmations = await receipt.confirmations;
 
       alert(
         `Proposal created successfully with ${confirmations} confirmations!`
@@ -52,7 +52,7 @@ const CreateProposal = ({ contractABI, contractAddress }) => {
       <h2>Create New Proposal</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Proposal Name:
+          Proposal Name
           <input
             type="text"
             value={proposalName}
@@ -60,7 +60,10 @@ const CreateProposal = ({ contractABI, contractAddress }) => {
           />
         </label>
         <label>
-          Quorum:
+          Quorum
+          <p style={{ fontStyle: "italic", fontSize: "11px" }}>
+            (How many wallets are required to vote?)
+          </p>
           <input
             type="number"
             value={quorum}
@@ -68,6 +71,7 @@ const CreateProposal = ({ contractABI, contractAddress }) => {
             min="0"
           />
         </label>
+
         <button type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : "Submit Proposal"}
         </button>

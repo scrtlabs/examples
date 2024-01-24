@@ -4,9 +4,7 @@ import CreateProposal from "./components/createProposal";
 import ProposalsList from "./components/proposalsList";
 import ProposalResults from "./components/proposalResults";
 import ABI from "./ABI/PrivateVoting.json";
-import { Web3Provider } from "@ethersproject/providers";
-import { Contract } from "ethers";
-
+import { ethers } from "ethers";
 import "./App.css";
 
 const contractABI = ABI.abi;
@@ -15,106 +13,62 @@ const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 function App() {
   const [openProposals, setOpenProposals] = useState([]);
   const [closedProposals, setClosedProposals] = useState([]);
-
   useEffect(() => {
-    fetchProposals();
-    subscribeToProposalChanges();
-    const interval = setInterval(fetchClosedProposals, 10000); // Poll every 10 seconds
+    const fetchProposals = async () => {
+      try {
+        if (window.ethereum) {
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          await provider.send("eth_requestAccounts", []);
+          const signer = provider.getSigner();
+          const contract = new ethers.Contract(
+            contractAddress,
+            contractABI,
+            signer
+          );
 
-    return () => {
-      unsubscribeFromProposalChanges();
-      clearInterval(interval);
+          // Fetch open proposals
+          const open = await contract.getAllProposals(true);
+          if (open.length === 0) {
+            console.log("No open proposals");
+          } else {
+            setOpenProposals(open);
+          }
+
+          // Fetch closed proposals
+          const closed = await contract.getAllProposals(false);
+          setClosedProposals(closed);
+        } else {
+          alert("Please install MetaMask!");
+        }
+      } catch (error) {
+        console.error("Error fetching proposals:", error);
+      }
     };
+
+    // Call the function immediately to fetch initial data
+    fetchProposals();
+
+    // Set up the interval to fetch data every 10 seconds
+    const intervalId = setInterval(fetchProposals, 10000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
-  const fetchProposals = async () => {
-    try {
-      if (!window.ethereum) {
-        alert("Please install MetaMask!");
-        return;
-      }
+  const refreshProposals = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 seconds delay
 
-      const provider = new Web3Provider(window.ethereum);
-      const contract = new Contract(contractAddress, contractABI, provider);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(contractAddress, contractABI, signer);
+    // Re-fetch open proposals
+    const open = await contract.getAllProposals(true);
+    setOpenProposals(open);
 
-      const open = await contract.getAllProposals(true);
-      setOpenProposals(open);
-
-      const closed = await contract.getAllProposals(false);
-      setClosedProposals(closed);
-    } catch (error) {
-      console.error("Error fetching proposals:", error);
-    }
-  };
-
-  const fetchClosedProposals = async () => {
-    if (!window.ethereum) return;
-
-    const provider = new Web3Provider(window.ethereum);
-    const contract = new Contract(contractAddress, contractABI, provider);
-    const allClosedProposals = await contract.getAllProposals(false);
-
-    setClosedProposals(allClosedProposals);
-  };
-
-  const subscribeToProposalChanges = async () => {
-    if (!window.ethereum) return;
-
-    const provider = new Web3Provider(window.ethereum);
-    const contract = new Contract(contractAddress, contractABI, provider);
-
-    // Listen for the 'ProposalCreated' event
-    contract.on("ProposalCreated", (newProposalId) => {
-      addNewProposal(newProposalId.toNumber());
-    });
-
-    // Existing listener for 'VotingClosed'
-    contract.on("VotingClosed", (proposalId) => {
-      updateProposals(proposalId.toNumber());
-    });
-  };
-
-  const addNewProposal = async (newProposalId) => {
-    const provider = new Web3Provider(window.ethereum);
-    const contract = new Contract(contractAddress, contractABI, provider);
-
-    // Fetch the new proposal details using the correct function from the contract
-    const newProposalData = await contract.getProposal(newProposalId);
-
-    // Create a proposal object to match the structure used in your app
-    const newProposal = {
-      id: newProposalData[0],
-      description: newProposalData[1],
-      quorum: newProposalData[2],
-      voteCount: newProposalData[3],
-      // Add more fields here if needed
-    };
-
-    setOpenProposals([...openProposals, newProposal]);
-  };
-
-  const updateProposals = async (closedProposalId) => {
-    const updatedOpenProposals = openProposals.filter(
-      (proposal) => proposal.id !== closedProposalId
-    );
-    setOpenProposals(updatedOpenProposals);
-
-    const closedProposal = openProposals.find(
-      (proposal) => proposal.id === closedProposalId
-    );
-    if (closedProposal) {
-      setClosedProposals([...closedProposals, closedProposal]);
-    }
-  };
-
-  const unsubscribeFromProposalChanges = () => {
-    if (!window.ethereum) return;
-
-    const provider = new Web3Provider(window.ethereum);
-    const contract = new Contract(contractAddress, contractABI, provider);
-
-    contract.removeAllListeners("VotingClosed");
-    contract.removeAllListeners("ProposalCreated"); // Remove listener for 'ProposalCreated'
+    // Re-fetch closed proposals
+    const closed = await contract.getAllProposals(false);
+    setClosedProposals(closed);
   };
 
   return (
@@ -134,6 +88,7 @@ function App() {
               proposals={openProposals}
               contractABI={contractABI}
               contractAddress={contractAddress}
+              onVote={refreshProposals}
             />
           </div>
         </div>
