@@ -22,7 +22,8 @@ async function queryVotes(proposalId) {
   }
 }
 
-// queryVotes(1);
+let proposalId = 1;
+queryVotes(proposalId);
 
 // Export the queryVotes function
 module.exports = {
