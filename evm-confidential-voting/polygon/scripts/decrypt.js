@@ -7,8 +7,8 @@ const { decrypt } = require("../../secret-network/node/decrypt.js");
 require("dotenv").config();
 
 async function decrypt_votes() {
-  // let encrypted_vote = await queryVotes(1);
-  await decrypt([]);
+  let encrypted_vote = await queryVotes(1);
+  await decrypt(encrypted_vote);
   await queryDecryptedVotes();
 }
 decrypt_votes();

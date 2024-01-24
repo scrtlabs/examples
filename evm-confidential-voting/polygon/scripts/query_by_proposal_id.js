@@ -30,7 +30,7 @@ async function getProposalById(proposalId) {
 // Example usage
 const proposalId = 1; // Replace with the proposal ID you want to query
 getProposalById(proposalId).then((proposal) => {
-  //   console.log("Fetched Proposal:", proposal);
+  console.log("Fetched Proposal:", proposal);
 });
 
 module.exports = {
