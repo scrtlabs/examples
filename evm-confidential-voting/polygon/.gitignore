@@ -110,3 +110,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+/artifacts
+/cache
