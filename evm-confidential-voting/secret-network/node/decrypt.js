@@ -37,9 +37,9 @@ let decrypt = async (encrypted_votes) => {
   console.log(tx);
 };
 
-decrypt([
-  "0xacd8ff6547141c682bb6cbf136a71fbce3c16966ee9583f6a72bd9dca9c1650e0e405d87b753432980b105b79e149b2d043cf530d9280efd7ab8fd9361db712e1372818c19b30deda8c7331f6b8eabee6016d01feb2a0dce1f247289bff6c2e2fc3bd2c03fafac54ba83201d018e582cade16dbd43cda1a1e3",
-]);
+// decrypt([
+//   "0xacd8ff6547141c682bb6cbf136a71fbce3c16966ee9583f6a72bd9dca9c1650e0e405d87b753432980b105b79e149b2d043cf530d9280efd7ab8fd9361db712e1372818c19b30deda8c7331f6b8eabee6016d01feb2a0dce1f247289bff6c2e2fc3bd2c03fafac54ba83201d018e582cade16dbd43cda1a1e3",
+// ]);
 
 module.exports = {
   decrypt,
