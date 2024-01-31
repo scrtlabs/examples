@@ -1,6 +1,6 @@
 import * as miscreant from "miscreant";
 import { toUtf8 } from "@cosmjs/encoding";
-import secp256k1 from "secp256k1/elliptic.js";
+import secp256k1 from "secp256k1/elliptic";
 
 const provider = new miscreant.PolyfillCryptoProvider();
 

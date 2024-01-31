@@ -1,0 +1,1 @@
+To follow along with documentation for this repository, view the Secret docs [here](https://docs.scrt.network/secret-network-documentation/development/ethereum-evm-developer-toolkit/connecting-evm-with-snakepath-on-chain-rng/rng-evm-developer-tutorial)
