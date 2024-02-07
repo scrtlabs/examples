@@ -20,7 +20,7 @@ let query_secret_network = async () => {
   let query = await secretjs.query.compute.queryContract({
     contract_address: contractAddress,
     query: {
-      get_execution_result: { task: { network: "80001", task_id: "3" } },
+      get_execution_result: { task: { network: "80001", task_id: "6" } },
     },
     code_hash: contractCodeHash,
   });
