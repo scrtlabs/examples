@@ -6,7 +6,7 @@ const wallet = new Wallet(process.env.MNEMONIC);
 
 const secretjs = new SecretNetworkClient({
   chainId: "pulsar-3",
-  url: "https://lcd.pulsar-3.secretsaturn.net",
+  url: "https://lcd.testnet.secretsaturn.net",
   wallet: wallet,
   walletAddress: wallet.address,
 });
@@ -17,7 +17,7 @@ let contractCodeHash =
 let contractAddress = "secret1q3drrgpqrgqr54glsee0m8upkvnck44rzf9rj0";
 
 //send_message_evm variables
-let destinationChain = "Polygon";
+let destinationChain = "polygon-amoy";
 let destinationAddress = "0x4396a9F3b1962bC7277fC44a78AA5c57e8966978";
 
 let send_message_evm = async () => {

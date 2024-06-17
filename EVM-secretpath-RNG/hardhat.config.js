@@ -14,7 +14,7 @@ module.exports = {
   },
   networks: {
     polygon: {
-      url: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_KEY}`,
+      url: `https://polygon-amoy.infura.io/v3/${process.env.INFURA_KEY}`,
       accounts: [process.env.PRIVATE_KEY],
     },
   },

@@ -12,4 +12,4 @@
 7. [Ethereum -> Secret Tutorial (General Message Passing with Axelar GMP)](./secret-ethereum-gmp/)
 8. [Ethereum Encryption/Decryption Tutorial with Secret Contracts](./EVM-encrypt-decrypt/)
 9. [Private Voting on the EVM with Secret Contracts](./evm-confidential-voting/)
-10. [RNG on the EVM with Snakepath](./EVM-snakepath-RNG/)
+10. [RNG on the EVM with SecretPath](./EVM-snakepath-RNG/)

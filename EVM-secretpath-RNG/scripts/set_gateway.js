@@ -13,7 +13,7 @@ async function set_gateway() {
   );
 
   const tx = await RandomnessReceiver.setGatewayAddress(
-    process.env.MUMABI_GATEWAY_ADDRESS
+    process.env.AMOY_GATEWAY_ADDRESS
   );
 
   console.log(`Transaction hash: ${tx.hash}`);

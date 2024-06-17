@@ -4,7 +4,7 @@ const wallet = new Wallet(process.env.REACT_APP_MNEMONIC);
 
 const secretjs = new SecretNetworkClient({
   chainId: "pulsar-3",
-  url: "https://lcd.pulsar-3.secretsaturn.net",
+  url: "https://lcd.testnet.secretsaturn.net",
   wallet: wallet,
   walletAddress: wallet.address,
 });
